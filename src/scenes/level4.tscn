@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=4 uid="uid://dqkj5rr40ojwg"]
+
+[ext_resource type="TileSet" uid="uid://6o26ex642kgq" path="res://src/res/tileset.tres" id="1_fjxj4"]
+[ext_resource type="PackedScene" uid="uid://c37g2ikqurgxb" path="res://src/scenes/throwable_box.tscn" id="2_xxcpc"]
+[ext_resource type="PackedScene" uid="uid://uc1qbs54tl4g" path="res://src/scenes/throwable_ball.tscn" id="3_twbvr"]
+[ext_resource type="PackedScene" uid="uid://dlklxu1g5qmtu" path="res://src/scenes/unthrowable_box.tscn" id="4_8ue1t"]
+[ext_resource type="PackedScene" uid="uid://1dfgm8lk5p23" path="res://src/scenes/unthrowable_ball.tscn" id="5_57rnj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6ahve"]
+font_color = Color(0.270634, 0.270634, 0.270634, 1)
+outline_color = Color(0.270634, 0.270634, 0.270634, 1)
+shadow_size = 0
+
+[node name="Level4" type="TileMapLayer"]
+tile_map_data = PackedByteArray("AAAAABEAAQAAAAAAAAABABEAAQAAAAAAAAACABEAAQAAAAAAAAADABEAAQAAAAAAAAAEABEAAQAAAAAAAAAFABEAAQAAAAAAAAAGABEAAQAAAAAAAAAHABEAAQAAAAAAAAAIABEAAQAAAAAAAAAJABEAAQAAAAAAAAAKABEAAQAAAAAAAAALABEAAQAAAAAAAAAMABEAAQAAAAAAAAANABEAAQAAAAAAAAAOABEAAQAAAAAAAAAPABEAAQAAAAAAAAAQABEAAQAAAAAAAAARABEAAQAAAAAAAAASABEAAQAAAAAAAAATABEAAQAAAAAAAAAUABEAAQAAAAAAAAAVABEAAQAAAAAAAAAWABEAAQAAAAAAAAAXABEAAQAAAAAAAAAYABEAAQAAAAAAAAAZABEAAQAAAAAAAAAaABEAAQAAAAAAAAAbABEAAQAAAAAAAAAcABEAAQAAAAAAAAAdABEAAQAAAAAAAAAeABEAAQAAAAAAAAAfABEAAQAAAAAAAAAfAAAAAQAAAAAAAAAeAAAAAQAAAAAAAAAdAAAAAQAAAAAAAAAcAAAAAQAAAAAAAAAbAAAAAQAAAAAAAAAaAAAAAQAAAAAAAAAZAAAAAQAAAAAAAAAYAAAAAQAAAAAAAAAXAAAAAQAAAAAAAAAWAAAAAQAAAAAAAAAVAAAAAQAAAAAAAAAUAAAAAQAAAAAAAAATAAAAAQAAAAAAAAASAAAAAQAAAAAAAAARAAAAAQAAAAAAAAAQAAAAAQAAAAAAAAAPAAAAAQAAAAAAAAAOAAAAAQAAAAAAAAANAAAAAQAAAAAAAAAMAAAAAQAAAAAAAAALAAAAAQAAAAAAAAAKAAAAAQAAAAAAAAAJAAAAAQAAAAAAAAAIAAAAAQAAAAAAAAAHAAAAAQAAAAAAAAAGAAAAAQAAAAAAAAAFAAAAAQAAAAAAAAAEAAAAAQAAAAAAAAADAAAAAQAAAAAAAAACAAAAAQAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAAUAAQAAAAAAAAAAAAYAAQAAAAAAAAAAAAcAAQAAAAAAAAAAAAgAAQAAAAAAAAAAAAkAAQAAAAAAAAAAAAoAAQAAAAAAAAAAAAsAAQAAAAAAAAAfAAYAAQAAAAAAAAAfAAUAAQAAAAAAAAAfAAQAAQAAAAAAAAAfAAMAAQAAAAAAAAAfAAIAAQAAAAAAAAAfAAEAAQAAAAAAAAD//wwAAQAAAAAAAAD//w0AAQAAAAAAAAD//w4AAQAAAAAAAAD//w8AAQAAAAAAAAD//xAAAQAAAAAAAAAfAAwAAQAAAAAAAAAfAA0AAQAAAAAAAAAfAA4AAQAAAAAAAAAfAA8AAQAAAAAAAAAfABAAAQAAAAAAAAAfAAcAAgAAAAAAAAAfAAgAAgAAAAAAAAAfAAkAAgAAAAAAAAAfAAoAAgAAAAAAAAAfAAsAAgAAAAAAAAAgAAcAAQAAAAAAAAAgAAgAAQAAAAAAAAAgAAkAAQAAAAAAAAAgAAoAAQAAAAAAAAAgAAsAAQAAAAAAAAAdABAAAAAAAAAAAAAcABAAAAAAAAAAAAAbABAAAAAAAAAAAAAaABAAAAAAAAAAAAAeAA8AAAAAAAAAAGAeAA4AAAAAAAAAAGAeAA0AAAAAAAAAAGAeAAwAAAAAAAAAAGA=")
+tile_set = ExtResource("1_fjxj4")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 213.0
+offset_top = 181.0
+offset_right = 767.0
+offset_bottom = 374.0
+text = "hey, do you possibly know a good carpenter? maybe a cleaner too? sorry it's a mess in here"
+label_settings = SubResource("LabelSettings_6ahve")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(21, 495)
+
+[node name="Box" parent="." instance=ExtResource("2_xxcpc")]
+position = Vector2(175, 430)
+
+[node name="Box2" parent="." instance=ExtResource("2_xxcpc")]
+position = Vector2(498, 251)
+
+[node name="Box3" parent="." instance=ExtResource("2_xxcpc")]
+position = Vector2(554, 435)
+
+[node name="Ball" parent="." instance=ExtResource("3_twbvr")]
+position = Vector2(284, 444)
+
+[node name="Box4" parent="." instance=ExtResource("2_xxcpc")]
+position = Vector2(415, 450)
+
+[node name="UnthrowableBox" parent="." instance=ExtResource("4_8ue1t")]
+position = Vector2(763, 390)
+
+[node name="UnthrowableBox2" parent="." instance=ExtResource("4_8ue1t")]
+position = Vector2(274, 360)
+
+[node name="UnthrowableBall" parent="." instance=ExtResource("5_57rnj")]
+position = Vector2(714, 232)
+
+[node name="UnthrowableBall2" parent="." instance=ExtResource("5_57rnj")]
+position = Vector2(459, 90)
+
+[node name="UnthrowableBall3" parent="." instance=ExtResource("5_57rnj")]
+position = Vector2(141, 279)

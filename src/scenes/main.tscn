@@ -1,16 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7jtnty21u4sp"]
+[gd_scene load_steps=5 format=3 uid="uid://b7jtnty21u4sp"]
 
+[ext_resource type="Script" path="res://src/scenes/main.gd" id="1_2hqd8"]
 [ext_resource type="PackedScene" uid="uid://b0l3i4jmvuumk" path="res://src/scenes/player.tscn" id="1_cyo24"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tu42r"]
-distance = -500.0
+[ext_resource type="PackedScene" uid="uid://p5ivqwmtdd1y" path="res://src/scenes/level0.tscn" id="3_2voko"]
+[ext_resource type="PackedScene" uid="uid://bxyob7qhdihp5" path="res://src/scenes/themythicalduck.tscn" id="3_ed43k"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_2hqd8")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1024.0
+offset_bottom = 576.0
+mouse_filter = 2
+color = Color(0.87451, 0.87451, 0.87451, 1)
 
-[node name="Bottom" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("WorldBoundaryShape2D_tu42r")
+[node name="Level0" parent="." instance=ExtResource("3_2voko")]
+
+[node name="TheMythicalDuck" parent="." instance=ExtResource("3_ed43k")]
+position = Vector2(496, 224)
 
 [node name="Player" parent="." instance=ExtResource("1_cyo24")]
-position = Vector2(612, 260)
+
+[connection signal="level_loaded" from="." to="TheMythicalDuck" method="_on_level_loaded"]
+[connection signal="level_loaded" from="." to="Player" method="_on_level_loaded"]

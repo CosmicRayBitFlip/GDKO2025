@@ -1,0 +1,115 @@
+[gd_scene load_steps=11 format=3 uid="uid://bxyob7qhdihp5"]
+
+[ext_resource type="Script" path="res://src/scenes/themythicalduck.gd" id="1_sbk4h"]
+[ext_resource type="Texture2D" uid="uid://kdh2g3orvu8u" path="res://assets/img/themythicalduck.png" id="1_yiywd"]
+[ext_resource type="Texture2D" uid="uid://cqmwhd7repbmi" path="res://assets/img/duckcollectparticle.png" id="3_obien"]
+
+[sub_resource type="Animation" id="Animation_r3pge"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_vd2ik"]
+resource_name = "default"
+length = 3.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 10), Vector2(0, -10)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.261799, 0.261799]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qh3eg"]
+_data = {
+"RESET": SubResource("Animation_r3pge"),
+"default": SubResource("Animation_vd2ik")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hn4l7"]
+radius = 16.0
+
+[sub_resource type="Curve" id="Curve_tcmxa"]
+max_value = 8.0
+_data = [Vector2(0, 4), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+metadata/_snap_enabled = true
+metadata/_snap_count = 16
+
+[sub_resource type="CurveTexture" id="CurveTexture_3yyd5"]
+curve = SubResource("Curve_tcmxa")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dv0o0"]
+particle_flag_disable_z = true
+radial_velocity_min = 50.0
+radial_velocity_max = 200.0
+gravity = Vector3(0, 98, 0)
+radial_accel_min = -25.0
+radial_accel_max = -20.0
+scale_curve = SubResource("CurveTexture_3yyd5")
+
+[node name="TheMythicalDuck" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_sbk4h")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_yiywd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qh3eg")
+}
+
+[node name="CollectionRadius" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hn4l7")
+
+[node name="DeathParticleEmitter" type="GPUParticles2D" parent="."]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_dv0o0")
+texture = ExtResource("3_obien")
+one_shot = true
+explosiveness = 1.0
+randomness = 0.5
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

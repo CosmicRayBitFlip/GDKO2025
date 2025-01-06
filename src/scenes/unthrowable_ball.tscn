@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://1dfgm8lk5p23"]
+
+[ext_resource type="Texture2D" uid="uid://ckwkpxdwse7gb" path="res://assets/img/unthrowableball.png" id="2_t0qf1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ca6pg"]
+radius = 16.0
+
+[node name="UnthrowableBall" type="RigidBody2D"]
+can_sleep = false
+continuous_cd = 1
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_t0qf1")
+
+[node name="BoundingBox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ca6pg")

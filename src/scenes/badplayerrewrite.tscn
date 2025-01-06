@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cv0ir5rpyxb1b"]
+
+[ext_resource type="Script" path="res://src/scenes/badplayerrewrite.gd" id="1_s8uvj"]
+[ext_resource type="Texture2D" uid="uid://c5u83tkahw3fk" path="res://assets/img/player.png" id="1_ywbps"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pj5j3"]
+height = 44.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_s8uvj")
+
+[node name="BoundingBox" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_pj5j3")
+
+[node name="Player" type="Sprite2D" parent="."]
+texture = ExtResource("1_ywbps")
+offset = Vector2(1, 0)

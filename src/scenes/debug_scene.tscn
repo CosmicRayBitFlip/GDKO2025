@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://doefhfmsfjdob"]
+
+[ext_resource type="Script" path="res://src/scenes/main.gd" id="1_db8du"]
+[ext_resource type="PackedScene" uid="uid://lghh8gx02yvw" path="res://src/scenes/level-1.tscn" id="2_72fxp"]
+[ext_resource type="PackedScene" uid="uid://cv0ir5rpyxb1b" path="res://src/scenes/badplayerrewrite.tscn" id="3_8b7k7"]
+
+[node name="DebugScene" type="Node2D"]
+script = ExtResource("1_db8du")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1024.0
+offset_bottom = 576.0
+mouse_filter = 2
+color = Color(0.87451, 0.87451, 0.87451, 1)
+
+[node name="Level-1" parent="." instance=ExtResource("2_72fxp")]
+
+[node name="Player" parent="." instance=ExtResource("3_8b7k7")]
+
+[connection signal="level_loaded" from="." to="Player" method="_on_level_loaded"]

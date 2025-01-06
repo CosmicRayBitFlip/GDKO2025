@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c37g2ikqurgxb"]
+
+[ext_resource type="Script" path="res://src/classes/Throwable.gd" id="1_jkce5"]
+[ext_resource type="Texture2D" uid="uid://dw827xlcer8ul" path="res://assets/img/throwableblock.png" id="2_ts30d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8d4ix"]
+size = Vector2(32, 32)
+
+[node name="Box" type="RigidBody2D"]
+input_pickable = true
+can_sleep = false
+continuous_cd = 1
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_jkce5")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_ts30d")
+
+[node name="BoundingBox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8d4ix")

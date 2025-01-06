@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlklxu1g5qmtu"]
+
+[ext_resource type="Texture2D" uid="uid://dkkrcr6o53b1f" path="res://assets/img/unthrowableblock.png" id="1_fik34"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8d4ix"]
+size = Vector2(32, 32)
+
+[node name="UnthrowableBox" type="RigidBody2D"]
+can_sleep = false
+continuous_cd = 1
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_fik34")
+
+[node name="BoundingBox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8d4ix")
