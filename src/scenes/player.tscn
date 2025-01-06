@@ -11,8 +11,8 @@ rough = true
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i1kl4"]
 height = 44.0
 
-[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_haw3a"]
-length = 32.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_h7lvh"]
+radius = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pj4nc"]
 size = Vector2(8, 40)
@@ -55,14 +55,17 @@ texture = ExtResource("1_ywbps")
 offset = Vector2(1, 0)
 
 [node name="BoundingBox" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CapsuleShape2D_i1kl4")
 
 [node name="FloorDetector" type="Area2D" parent="."]
+position = Vector2(0, 26)
 
 [node name="MagicalFloorDetectingArrow" type="CollisionShape2D" parent="FloorDetector"]
-shape = SubResource("SeparationRayShape2D_haw3a")
+shape = SubResource("CircleShape2D_h7lvh")
 
 [node name="HitDetector" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -71,6 +74,7 @@ shape = SubResource("RectangleShape2D_pj4nc")
 debug_color = Color(1, 0.00189202, 0.0771282, 0.42)
 
 [node name="NextLevelTriggerDetector" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 4
 
@@ -79,6 +83,7 @@ shape = SubResource("CircleShape2D_biep6")
 debug_color = Color(2.98411e-06, 0.644415, 0.281347, 0.42)
 
 [node name="PrevLevelTriggerDetector" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 8
 
@@ -88,7 +93,6 @@ debug_color = Color(2.98411e-06, 0.644415, 0.281347, 0.42)
 
 [node name="JumpBufferTimer" type="Timer" parent="."]
 process_callback = 0
-wait_time = 0.1
 one_shot = true
 
 [node name="CoyoteTimer" type="Timer" parent="."]

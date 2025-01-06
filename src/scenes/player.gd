@@ -15,6 +15,7 @@ const drag_constant     :float = 5
 var jumping     :bool = false
 var just_jumped :bool = false
 var on_floor    :bool = true
+var can_jump    :bool = true
 
 var current_level :NodePath
 
@@ -23,7 +24,7 @@ func _input(event:InputEvent) -> void:
 		if Input.is_action_just_pressed("jump"):
 			jumping     = true
 			just_jumped = true
-			#jump_buffer_timer.start()
+			jump_buffer_timer.start()
 		elif Input.is_action_just_pressed("retry"):
 			scene_root.reload_current_level()
 
@@ -40,27 +41,30 @@ func _integrate_forces(state:PhysicsDirectBodyState2D) -> void:
 		apply_central_force(drag_force)
 	
 	if jumping:
-		if just_jumped and on_floor:
+		if just_jumped and can_jump:
 			set_axis_velocity(Vector2.UP * jump_velocity)
-		just_jumped = false
-		on_floor = false
+			just_jumped = false
+			can_jump = false
+			on_floor = false
 	
-	if floor_ray.has_overlapping_bodies() and not linear_velocity.y < -5:
+	if floor_ray.has_overlapping_bodies():
+		jump_buffer_timer.stop()
 		on_floor = true
+		can_jump = true
 		jumping = false
-	elif coyote_timer.is_stopped() and linear_velocity.y < -5:
+	elif coyote_timer.is_stopped():
+		on_floor = false
 		coyote_timer.start()
-	
 
 func spawn(levelname:NodePath):
 	set_deferred(&"position", scene_root.get_node(levelname).get_node("PlayerSpawn").position)
 
 func _on_jump_buffer_timer_timeout() -> void:
-	jumping = false
+	just_jumped = false
 
 func _on_coyote_timer_timeout() -> void:
-	print("no coyot")
-	on_floor = false
+	if not floor_ray.has_overlapping_bodies():
+		can_jump = false
 
 func _on_level_loaded(levelname:NodePath) -> void:
 	current_level = levelname
