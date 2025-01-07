@@ -23,7 +23,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "you beat the best platformer since that one game
-test build 1
+test build 3
 game by CosmicRayBitFlip"
 label_settings = SubResource("LabelSettings_2ms7t")
 horizontal_alignment = 1
