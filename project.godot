@@ -69,6 +69,7 @@ debug_prev_level={
 
 [physics]
 
+2d/default_gravity=1150.0
 2d/default_linear_damp=0.0
 
 [rendering]

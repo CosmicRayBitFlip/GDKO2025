@@ -36,3 +36,9 @@ position = Vector2(72, 141)
 
 [node name="UnthrowableBox" parent="." instance=ExtResource("4_1ixxx")]
 position = Vector2(305, 479)
+
+[node name="UnthrowableBox2" parent="." instance=ExtResource("4_1ixxx")]
+position = Vector2(408, 206)
+
+[node name="UnthrowableBox3" parent="." instance=ExtResource("4_1ixxx")]
+position = Vector2(537, 203)

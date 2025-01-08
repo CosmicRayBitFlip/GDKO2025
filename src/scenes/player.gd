@@ -8,10 +8,10 @@ extends RigidBody2D
 @onready var floor_ray         :Area2D          = $FloorDetector
 @onready var sprite_animator   :AnimationPlayer = $SpriteAnimator
 
-const movement_accel    :float = 1200
+const movement_accel    :float = 1400
 const jump_velocity     :float = 500
 const walljump_velocity :float = 750
-const drag_constant     :float = 5
+const drag_constant     :float = 6
 
 var jumping      :bool = false
 var just_jumped  :bool = false
@@ -36,6 +36,11 @@ func _integrate_forces(state:PhysicsDirectBodyState2D) -> void:
 		apply_central_force(Vector2.LEFT * movement_accel)
 	if Input.is_action_pressed("right"):
 		apply_central_force(Vector2.RIGHT * movement_accel)
+	
+	if Input.is_action_pressed("jump"):
+		gravity_scale = 1
+	else:
+		gravity_scale = 1.7
 	
 	var facing_dir = Input.get_axis("left", "right")
 	

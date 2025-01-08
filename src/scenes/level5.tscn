@@ -17,7 +17,8 @@ offset_left = 407.0
 offset_top = 57.0
 offset_right = 961.0
 offset_bottom = 250.0
-text = "if you ever need to reset the level if you get softlocked or something just press r"
+text = "if you ever need to reset the level if you get softlocked or something just press r
+"
 label_settings = SubResource("LabelSettings_6ahve")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -27,31 +28,37 @@ autowrap_mode = 2
 position = Vector2(21, 335)
 
 [node name="UnthrowableBox" parent="." instance=ExtResource("2_kne3w")]
-position = Vector2(64, 501)
+position = Vector2(77, 508)
 
 [node name="UnthrowableBox2" parent="." instance=ExtResource("2_kne3w")]
-position = Vector2(106, 495)
+position = Vector2(109, 510)
 
 [node name="UnthrowableBox3" parent="." instance=ExtResource("2_kne3w")]
-position = Vector2(152, 508)
+position = Vector2(145, 512)
 
 [node name="UnthrowableBox4" parent="." instance=ExtResource("2_kne3w")]
-position = Vector2(185, 517)
+position = Vector2(178, 513)
 
 [node name="UnthrowableBox5" parent="." instance=ExtResource("2_kne3w")]
-position = Vector2(229, 514)
+position = Vector2(213, 509)
 
 [node name="UnthrowableBox6" parent="." instance=ExtResource("2_kne3w")]
 position = Vector2(361, 516)
 
 [node name="UnthrowableBox7" parent="." instance=ExtResource("2_kne3w")]
-position = Vector2(526, 508)
+position = Vector2(569, 511)
 
 [node name="UnthrowableBox8" parent="." instance=ExtResource("2_kne3w")]
-position = Vector2(622, 519)
+position = Vector2(657, 516)
 
 [node name="UnthrowableBox9" parent="." instance=ExtResource("2_kne3w")]
-position = Vector2(843, 521)
+position = Vector2(792, 518)
 
 [node name="UnthrowableBox10" parent="." instance=ExtResource("2_kne3w")]
-position = Vector2(928, 473)
+position = Vector2(956, 523)
+
+[node name="UnthrowableBox11" parent="." instance=ExtResource("2_kne3w")]
+position = Vector2(472, 513)
+
+[node name="UnthrowableBox12" parent="." instance=ExtResource("2_kne3w")]
+position = Vector2(872, 513)

@@ -17,11 +17,13 @@ offset_left = 213.0
 offset_top = 181.0
 offset_right = 767.0
 offset_bottom = 374.0
-text = "don't touch the spikes
+text = "you jump higher and fall slower if you hold down the jump button
+that being said, don't touch the spikes
 "
 label_settings = SubResource("LabelSettings_6ahve")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
 position = Vector2(21, 495)
