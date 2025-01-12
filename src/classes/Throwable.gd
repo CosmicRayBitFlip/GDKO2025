@@ -2,6 +2,11 @@ extends RigidBody2D
 
 class_name Throwable
 
+@onready var sfx_player := AudioStreamPlayer.new()
+
+@onready var grab_sfx :AudioStream = preload("res://assets/sfx/pickupbox.wav")
+@onready var drop_sfx :AudioStream = preload("res://assets/sfx/dropbox.wav")
+
 const following_speed = 10
 
 var mouse_inside    :bool = false
@@ -14,20 +19,34 @@ func _init() -> void:
 	contact_monitor = true
 	max_contacts_reported = 1
 
+func _ready() -> void:
+	add_child(sfx_player)
+
 func _integrate_forces(state:PhysicsDirectBodyState2D) -> void:
 	if following_mouse:
 		linear_velocity = global_position.direction_to(get_global_mouse_position()) * global_position.distance_to(get_global_mouse_position()) * following_speed
 
 func _input(event: InputEvent) -> void:
+	var current_sfx
 	if Input.is_action_just_pressed("grab_block") and mouse_inside:
+		current_sfx = grab_sfx
 		following_mouse = true
 		gravity_scale = 0
-	elif Input.is_action_just_released("grab_block"):
+	elif Input.is_action_just_released("grab_block") and following_mouse:
+		current_sfx = drop_sfx
 		following_mouse = false
 		gravity_scale = 1
+		
+	if current_sfx:
+		sfx_player.stream = current_sfx
+		sfx_player.play()
 
 func _on_collision(body:Node2D):
 	if body.name == "Player":
+		if following_mouse:
+			sfx_player.stream = drop_sfx
+			sfx_player.play()
+		
 		following_mouse = false
 		gravity_scale = 1
 		collision_layer = 1

@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://b0l3i4jmvuumk"]
+[gd_scene load_steps=23 format=3 uid="uid://b0l3i4jmvuumk"]
 
 [ext_resource type="Script" path="res://src/scenes/player.gd" id="1_qodmv"]
 [ext_resource type="Texture2D" uid="uid://c5u83tkahw3fk" path="res://assets/img/player.png" id="1_ywbps"]
 [ext_resource type="Texture2D" uid="uid://bemfl8j81ax3k" path="res://assets/img/playerdeathparticle.png" id="3_8m0qj"]
+[ext_resource type="AudioStream" uid="uid://dyduc2afuidwy" path="res://assets/sfx/nextlevel.wav" id="4_oy8cc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4q5a6"]
 friction = 0.0
@@ -483,17 +484,18 @@ collision_mask = 4
 shape = SubResource("CircleShape2D_biep6")
 debug_color = Color(2.98411e-06, 0.644415, 0.281347, 0.42)
 
-[node name="PrevLevelTriggerDetector" type="Area2D" parent="."]
+[node name="SpeedrunModeTriggerDetector" type="Area2D" parent="."]
 visible = false
 collision_layer = 0
 collision_mask = 8
 
-[node name="DetectorPoint" type="CollisionShape2D" parent="PrevLevelTriggerDetector"]
+[node name="DetectorPoint" type="CollisionShape2D" parent="SpeedrunModeTriggerDetector"]
 shape = SubResource("CircleShape2D_biep6")
 debug_color = Color(2.98411e-06, 0.644415, 0.281347, 0.42)
 
 [node name="JumpBufferTimer" type="Timer" parent="."]
 process_callback = 0
+wait_time = 0.1
 one_shot = true
 
 [node name="CoyoteTimer" type="Timer" parent="."]
@@ -509,7 +511,13 @@ one_shot = true
 explosiveness = 1.0
 randomness = 0.5
 
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="NextLevelSFXPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_oy8cc")
+
 [connection signal="body_entered" from="HitDetector" to="." method="_on_contact_with_damage_source"]
 [connection signal="body_entered" from="NextLevelTriggerDetector" to="." method="_on_next_level_trigger_entered"]
+[connection signal="body_entered" from="SpeedrunModeTriggerDetector" to="." method="_on_speedrun_mode_trigger_entered"]
 [connection signal="timeout" from="JumpBufferTimer" to="." method="_on_jump_buffer_timer_timeout"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]

@@ -1,8 +1,9 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://6o26ex642kgq"]
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://6o26ex642kgq"]
 
 [ext_resource type="Texture2D" uid="uid://didbw7827gdd7" path="res://assets/img/spike.png" id="1_dc6ow"]
 [ext_resource type="Texture2D" uid="uid://esnx2pttltrb" path="res://assets/img/block.png" id="1_io1t0"]
 [ext_resource type="Texture2D" uid="uid://nvh82wkq4ce4" path="res://assets/img/nextleveltrigger.png" id="3_c635d"]
+[ext_resource type="Texture2D" uid="uid://bls5sw055vl2g" path="res://assets/img/speedrunmodetrigger.png" id="4_trmvd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7b5fm"]
 resource_name = "Spike"
@@ -26,6 +27,13 @@ texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_2/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16, -16, -16)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w153i"]
+resource_name = "Speedrun Mode Trigger"
+texture = ExtResource("4_trmvd")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_3/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
 [resource]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
@@ -34,6 +42,9 @@ physics_layer_1/collision_layer = 2
 physics_layer_1/collision_mask = 0
 physics_layer_2/collision_layer = 4
 physics_layer_2/collision_mask = 0
+physics_layer_3/collision_layer = 8
+physics_layer_3/collision_mask = 0
 sources/1 = SubResource("TileSetAtlasSource_mphmb")
 sources/0 = SubResource("TileSetAtlasSource_7b5fm")
 sources/2 = SubResource("TileSetAtlasSource_dwj5p")
+sources/3 = SubResource("TileSetAtlasSource_w153i")

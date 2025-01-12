@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bxyob7qhdihp5"]
+[gd_scene load_steps=12 format=3 uid="uid://bxyob7qhdihp5"]
 
 [ext_resource type="Script" path="res://src/scenes/themythicalduck.gd" id="1_sbk4h"]
 [ext_resource type="Texture2D" uid="uid://kdh2g3orvu8u" path="res://assets/img/themythicalduck.png" id="1_yiywd"]
 [ext_resource type="Texture2D" uid="uid://cqmwhd7repbmi" path="res://assets/img/duckcollectparticle.png" id="3_obien"]
+[ext_resource type="AudioStream" uid="uid://djpc1p8douowb" path="res://assets/sfx/collectduck.wav" id="4_hvrpw"]
 
 [sub_resource type="Animation" id="Animation_r3pge"]
 length = 0.001
@@ -111,5 +112,8 @@ texture = ExtResource("3_obien")
 one_shot = true
 explosiveness = 1.0
 randomness = 0.5
+
+[node name="CollectSFXPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_hvrpw")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
